@@ -15,7 +15,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    private FirebaseAuth auth;
+    private FirebaseAuth mAuth;
     EditText email,password;
 
     @Override
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Firebase instance
-        auth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         // Text Inputs email and password
         email = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.editTextTextPassword);
@@ -31,13 +31,15 @@ public class MainActivity extends AppCompatActivity {
 
     // Login method
     public  void login(View view){
-        auth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+//        mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+        mAuth.signInWithEmailAndPassword("test@mail.com", "123456")
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             showMessage("Success", "login successfully");
                             startActivity(new Intent(getApplicationContext(),UserMenuActivity.class));
+                            finish();
 
                         }else {
                             showMessage("Error", task.getException().getLocalizedMessage());
@@ -48,17 +50,19 @@ public class MainActivity extends AppCompatActivity {
 
     // Register method
     public  void register(View view){
-        auth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString())
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            showMessage("Success", "register successfully uid: " + auth.getUid());
-                        }else {
-                            showMessage("Error", task.getException().getLocalizedMessage());
-                        }
-                    }
-                });
+        startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+        finish();
+//        mAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString())
+//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()){
+//                            showMessage("Success", "register successfully uid: " + mAuth.getUid());
+//                        }else {
+//                            showMessage("Error", task.getException().getLocalizedMessage());
+//                        }
+//                    }
+//                });
         //auth.signOut();
     }
 

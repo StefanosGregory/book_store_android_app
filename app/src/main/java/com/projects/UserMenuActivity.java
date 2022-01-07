@@ -9,9 +9,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.PopupMenu;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import me.ibrahimsn.lib.SmoothBottomBar;
 
 public class UserMenuActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
 
     private NavController navController;
     private SmoothBottomBar bottomNavigationView;
@@ -42,6 +45,10 @@ public class UserMenuActivity extends AppCompatActivity {
         bottomNavigationView.setElevation(4);
         bottomNavigationView.setupWithNavController(menu, navController);
     }
+
+    
+
+
 
 
 }
