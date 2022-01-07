@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             showMessage("Success", "login successfully");
+                            startActivity(new Intent(getApplicationContext(),UserMenuActivity.class));
+
                         }else {
                             showMessage("Error", task.getException().getLocalizedMessage());
                         }
