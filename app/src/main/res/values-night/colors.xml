@@ -4,4 +4,5 @@
     <color name="text">#E6DCDC</color>
     <color name="button">#AFB1B3</color>
     <color name="button_text">#272C35</color>
+    <color name="reverse">#AFB1B3</color>
 </resources>

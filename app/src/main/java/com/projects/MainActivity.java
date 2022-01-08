@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -68,5 +71,25 @@ public class MainActivity extends AppCompatActivity {
 
     void showMessage(String title, String message){
         new AlertDialog.Builder(this).setTitle(title).setMessage(message).setCancelable(true).show();
+    }
+
+    public void ShowHidePass(View view){
+
+        if(view.getId()==R.id.show_pass_btn){
+
+            if(password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                ((ImageView)(view)).setImageResource(R.drawable.ic_baseline_remove_red_eye_24_open);
+
+                //Show Password
+                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+            else{
+                ((ImageView)(view)).setImageResource(R.drawable.ic_baseline_remove_red_eye_24);
+
+                //Hide Password
+                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+            }
+        }
     }
 }

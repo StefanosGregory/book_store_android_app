@@ -5,52 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/primary"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="16dp">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="243dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/button"
-        android:onClick="register"
-        android:text="Register"
-        android:textColor="@color/button_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="328dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail">
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="243dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textColor="@color/text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
-    <EditText
-        android:id="@+id/editTextUsername"
-        android:layout_width="243dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="72dp"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="text"
-        android:textColor="@color/text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/show_pass_btn"
+            android:layout_width="44dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="false"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="38dp"
+            android:layout_toEndOf="@+id/edit_password"
+            android:alpha=".5"
+            android:onClick="ShowHidePass"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_remove_red_eye_24" />
+
+        <EditText
+            android:id="@+id/edit_password"
+            android:layout_width="243dp"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:backgroundTint="@color/reverse"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="@color/text" />
+
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/editTextFullName"
         android:layout_width="243dp"
         android:layout_height="54dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/reverse"
         android:ems="10"
         android:hint="Full name"
         android:inputType="text"
@@ -63,7 +65,8 @@
         android:id="@+id/editTextEmail"
         android:layout_width="243dp"
         android:layout_height="54dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/reverse"
         android:ems="10"
         android:hint="E-mail"
         android:inputType="text"
@@ -72,31 +75,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextFullName" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
+    <Button
+        android:id="@+id/register"
         android:layout_width="243dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/agree_with_terms_conditions"
-        android:textSize="12sp"
+        android:layout_height="53dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/button"
+        android:onClick="register"
+        android:text="Register"
+        android:textColor="@color/button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="241dp"
+        android:layout_width="243dp"
         android:layout_height="26dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:clickable="true"
         android:onClick="back"
         android:text="I'm already member"
         android:textAlignment="center"
         android:textColor="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/register" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="243dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/text"
+        android:text="@string/agree_with_terms_conditions"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="243dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@color/reverse"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="text"
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
