@@ -41,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             showMessage("Success", "login successfully");
-                            startActivity(new Intent(getApplicationContext(),UserMenuActivity.class));
+                            Intent intent = new Intent(getApplicationContext(),UserMenuActivity.class);
+                            intent.putExtra("user",mAuth.getCurrentUser());
+                            startActivity(intent);
                             finish();
 
                         }else {
@@ -55,18 +57,6 @@ public class MainActivity extends AppCompatActivity {
     public  void register(View view){
         startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
         finish();
-//        mAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString())
-//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()){
-//                            showMessage("Success", "register successfully uid: " + mAuth.getUid());
-//                        }else {
-//                            showMessage("Error", task.getException().getLocalizedMessage());
-//                        }
-//                    }
-//                });
-        //auth.signOut();
     }
 
     void showMessage(String title, String message){

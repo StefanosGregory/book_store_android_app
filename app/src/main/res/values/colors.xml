@@ -12,4 +12,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="reverse">#272C35</color>
+    <color name="purple">#673AB7</color>
 </resources>

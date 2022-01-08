@@ -9,15 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class ProfileFragment extends Fragment  {
     private FirebaseAuth mAuth;
     private View view;
+    private FirebaseUser user;
     // Firebase instance
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,16 +31,22 @@ public class ProfileFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        mAuth = FirebaseAuth.getInstance();
+
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        Button button = (Button) view.findViewById(R.id.logout);
+        Button button = view.findViewById(R.id.logout);
+        TextView textView =  view.findViewById(R.id.textViewUsername);
+        user = mAuth.getCurrentUser();
+        textView.setText(user.getDisplayName());
+
+
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                mAuth = FirebaseAuth.getInstance();
                 mAuth.signOut();
                 startActivity(new Intent(getActivity(), MainActivity.class));
                 getActivity().finish();

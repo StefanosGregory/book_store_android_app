@@ -3,13 +3,25 @@ package com.projects;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+
 public class MenuFragment extends Fragment {
     private View view;
+
+    private RecyclerView recyclerView;
+    bookAdapter adapter; // Create Object of the Adapter class
+    DatabaseReference databaseReference; // Create object of the
+    // Firebase Realtime Database
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,8 +31,38 @@ public class MenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_menu, container, false);
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        recyclerView = view.findViewById(R.id.recycler1);
+        // To display the Recycler view linearly
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        // It is a class provide by the FirebaseUI to make a
+        // query in the database to fetch appropriate data
+        FirebaseRecyclerOptions<book> options = new FirebaseRecyclerOptions.Builder<book>()
+                .setQuery(databaseReference, book.class)
+                .build();
+        adapter = new bookAdapter(options);
+        recyclerView.setAdapter(adapter);
         return view;
+    }
+
+    // Function to tell the app to start getting
+    // data from database on starting of the activity
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    // Function to tell the app to stop getting
+    // data from database on stopping of the activity
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        adapter.stopListening();
     }
 }

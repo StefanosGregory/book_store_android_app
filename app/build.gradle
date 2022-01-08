@@ -29,7 +29,16 @@ android {
 }
 
 dependencies {
-
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation 'androidx.core:core-ktx:1.8.0-alpha02'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    // Dependency FirebaseUI for Firebase Realtime Database
+    implementation 'com.firebaseui:firebase-ui-database:6.2.1'
+    // Dependency for Firebase REaltime Database
+    implementation 'com.google.firebase:firebase-database:20.0.3'
+    // This dependency includes all material components of the android app.
+    implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
