@@ -10,7 +10,7 @@
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="243dp"
         android:layout_height="54dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@color/reverse"
         android:ems="10"
         android:hint="Email"
@@ -18,15 +18,56 @@
         android:textColor="@color/text"
         android:textCursorDrawable="@drawable/cursor_i_purple"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textViewForgot"
+        android:layout_width="243dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="4dp"
+        android:clickable="true"
+        android:onClick="forgotPassword"
+        android:text="Forgot your password?"
+        android:textAlignment="center"
+        android:textColor="@color/purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <TextView
+        android:id="@+id/textViewForgot2"
+        android:layout_width="243dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="12dp"
+        android:clickable="true"
+        android:onClick="register"
+        android:text="Register"
+        android:textAlignment="center"
+        android:textColor="@color/purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewForgot"
+        app:layout_constraintTop_toBottomOf="@+id/textViewForgot" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="243dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/button"
+        android:onClick="login"
+        android:text="Login"
+        android:textColor="@color/button_text"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="324dp"
         android:layout_height="51dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
@@ -65,29 +106,17 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="243dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="@color/button"
-        android:onClick="login"
-        android:text="Login"
-        android:textColor="@color/button_text"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="243dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/button"
-        android:onClick="register"
-        android:text="Register"
-        android:textColor="@color/button_text"
+        android:layout_height="57dp"
+        android:fontFamily="@font/comfortaa"
+        android:text="Login "
+        android:textAlignment="textStart"
+        android:textColor="@color/text"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        tools:layout_editor_absoluteY="1dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

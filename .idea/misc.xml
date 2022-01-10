@@ -3,20 +3,31 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alexa/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_edit.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/alexa/AndroidStudioProjects/Project2/app/src/main/res/drawable/ic_speak.xml" value="0.21770833333333334" />
+        <entry key="..\:/Users/alexa/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_buy.xml" value="0.3625" />
+        <entry key="..\:/Users/alexa/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Users/alexa/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_user_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/alexa/AndroidStudioProjects/Project2/app/src/main/res/layout/book.xml" value="0.3625" />
+        <entry key="..\:/Users/alexa/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/alexa/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_profile.xml" value="0.3625" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.41302083333333334" />
         <entry key="app/src/main/res/drawable/cursor.xml" value="0.3921875" />
         <entry key="app/src/main/res/drawable/cursor_I_purple.xml" value="0.3861538461538462" />
         <entry key="app/src/main/res/drawable/cursor_i_purple.xml" value="0.3921875" />
+        <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.3990740740740741" />
         <entry key="app/src/main/res/drawable/ic_home_foreground.xml" value="0.41302083333333334" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.41302083333333334" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_buy.xml" value="0.396875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.396875" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.287962962962963" />
+        <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.37025641025641026" />
         <entry key="app/src/main/res/layout/activity_user_menu.xml" value="0.3828125" />
-        <entry key="app/src/main/res/layout/book.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/book.xml" value="0.5505443234836703" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.396875" />
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.31354166666666666" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.625" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.3828125" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.396875" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.396875" />

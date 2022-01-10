@@ -1,7 +1,10 @@
 package com.projects;
 
+import android.content.Intent;
 import android.net.Uri;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+
+import java.util.Locale;
 
 public class bookAdapter  extends FirebaseRecyclerAdapter<book, bookAdapter.bookViewholder>{
     public bookAdapter(
@@ -37,11 +42,30 @@ public class bookAdapter  extends FirebaseRecyclerAdapter<book, bookAdapter.book
         holder.textViewDescription.setText(model.getDescription());
         holder.textViewAuthor.setText(model.getAuthor());
         holder.textViewPrice.setText("€"+model.getPrice());
+        holder.tts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MenuFragment.tts.speak(model.getTitle(), TextToSpeech.QUEUE_FLUSH, null);
+            }
+        });
 
         int quantity =Integer.parseInt(model.getQuantity());
 
-        if( quantity >= 1){
+        if(quantity >= 1){
             holder.buttonBuy.setEnabled(true);
+
+            holder.buttonBuy.setOnClickListener(view -> {
+                Intent myIntent = new Intent(holder.imageView.getContext(), buyActivity.class);
+                myIntent.putExtra("title", model.getTitle());
+                myIntent.putExtra("type", model.getType());
+                myIntent.putExtra("author", model.getAuthor());
+                myIntent.putExtra("desc", model.getDescription());
+                myIntent.putExtra("price", model.getPrice());
+                myIntent.putExtra("quantity", model.getQuantity());
+                myIntent.putExtra("price", model.getPrice());
+                myIntent.putExtra("cover", model.getCover());
+                holder.imageView.getContext().startActivity(myIntent);
+            });
         }
     }
 
@@ -59,7 +83,7 @@ public class bookAdapter  extends FirebaseRecyclerAdapter<book, bookAdapter.book
     class bookViewholder extends RecyclerView.ViewHolder {
         TextView textViewTitle, textViewType, textViewDescription, textViewAuthor, textViewPrice;
         Button buttonBuy;
-        ImageView imageView;
+        ImageView imageView, tts;
         public bookViewholder(@NonNull View itemView)
         {
             super(itemView);
@@ -71,6 +95,7 @@ public class bookAdapter  extends FirebaseRecyclerAdapter<book, bookAdapter.book
             textViewAuthor = itemView.findViewById(R.id.textViewAuthor);
             textViewPrice = itemView.findViewById(R.id.textViewPrice);
             buttonBuy = itemView.findViewById(R.id.buttonBuy);
+            tts = itemView.findViewById(R.id.book_card_tts);
         }
     }
 

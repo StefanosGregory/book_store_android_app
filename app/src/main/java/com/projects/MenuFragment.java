@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,12 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Locale;
+
 
 public class MenuFragment extends Fragment {
     private View view;
+    public static TextToSpeech tts;
 
     private RecyclerView recyclerView;
     bookAdapter adapter; // Create Object of the Adapter class
@@ -45,6 +49,15 @@ public class MenuFragment extends Fragment {
                 .build();
         adapter = new bookAdapter(options);
         recyclerView.setAdapter(adapter);
+
+        tts=new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    tts.setLanguage(Locale.getDefault());
+                }
+            }
+        });
         return view;
     }
 
