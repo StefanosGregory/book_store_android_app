@@ -9,12 +9,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
 
 public class buyActivity extends AppCompatActivity {
+
+    int quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class buyActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 quantityText.setText("" + i);
                 totalPrice.setText("€" + String.format("%.2f", i*book_price));
+                quantity = i;
 
             }
 
@@ -74,5 +79,9 @@ public class buyActivity extends AppCompatActivity {
 
 
         findViewById(R.id.buy_book_cancel).setOnClickListener(view -> finish());
+    }
+
+    public void buy(View view){
+        Toast.makeText(view.getContext(), quantity + " book bought successfully!", Toast.LENGTH_SHORT).show();
     }
 }

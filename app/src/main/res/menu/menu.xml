@@ -3,22 +3,12 @@
 
     <item
         android:id="@+id/first_fragment"
-        android:title="Home"
+        android:title="@string/nav_home"
         android:icon="@drawable/ic_baseline_home_24"/>
 
     <item
         android:id="@+id/second_fragment"
-        android:title="Profile"
+        android:title="@string/nav_profile"
         android:icon="@drawable/ic_baseline_person_24"/>
-
-<!--    <item-->
-<!--        android:id="@+id/item2"-->
-<!--        android:title="test3"-->
-<!--        android:icon="@drawable/ic_store_white_24dp"/>-->
-
-<!--    <item-->
-<!--        android:id="@+id/item3"-->
-<!--        android:title="test4"-->
-<!--        android:icon="@drawable/ic_person_outline_white_24dp"/>-->
 
 </menu>

@@ -12,7 +12,7 @@
         android:layout_height="24dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/comfortaa"
-        android:text="Username"
+        android:text="@string/profile_username"
         android:textAlignment="textStart"
         android:textColor="@color/text"
         android:textSize="16sp"
@@ -27,7 +27,7 @@
         android:layout_height="24dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/comfortaa"
-        android:text="Email"
+        android:text="@string/register_email"
         android:textAlignment="textStart"
         android:textColor="@color/text"
         android:textSize="16sp"
@@ -36,38 +36,24 @@
         app:layout_constraintStart_toStartOf="@+id/textViewUsername"
         app:layout_constraintTop_toBottomOf="@+id/textViewUsername" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="139dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/comfortaa"
-        android:text="Phone"
-        android:textAlignment="textStart"
-        android:textColor="@color/text"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/textViewEmail"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
-
     <Button
         android:id="@+id/logout"
         android:layout_width="243dp"
         android:layout_height="53dp"
         android:layout_marginBottom="216dp"
         android:backgroundTint="@color/button"
-        android:text="Logout"
+        android:text="@string/profile_logout"
         android:textColor="@color/button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPhone" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewUsername"
         android:layout_width="243dp"
         android:layout_height="29dp"
         android:layout_marginTop="8dp"
-        android:text="username"
+        android:text="@string/profile_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -79,33 +65,11 @@
         android:layout_height="29dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="80dp"
-        android:text="email"
+        android:text="@string/register_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textViewPhone"
-        android:layout_width="243dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="8dp"
-        android:text="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <ImageView
-        android:id="@+id/profile_edit_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:src="@drawable/ic_edit"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewPhone"
-        app:layout_constraintStart_toEndOf="@+id/textViewPhone"
-        app:layout_constraintTop_toTopOf="@+id/textViewPhone"
-        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/profile_edit_username"

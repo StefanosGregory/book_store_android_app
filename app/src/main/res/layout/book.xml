@@ -106,7 +106,7 @@
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/button"
             android:enabled="false"
-            android:text="buy"
+            android:text="@string/buy_buy"
             android:textColor="@color/button_text"
             android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"

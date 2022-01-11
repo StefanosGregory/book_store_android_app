@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Βιβλιοπωλείο</string>
+    <string name="buy_purchase">Αγορά</string>
+    <string name="buy_quantity">"Ποσότητα: "</string>
+    <string name="buy_payment_method">Μέθοδος πληρωμής:</string>
+    <string name="buy_credit_card">Πιστωτική κάρτα</string>
+    <string name="buy_total">Σύνολο:</string>
+    <string name="buy_buynow">Αγοράστε τώρα</string>
+    <string name="buy_cancel">Ακύρωση</string>
+    <string name="register_register">Εγγραφή</string>
+    <string name="register_fullname">Ονοματεπώνυμο</string>
+    <string name="register_i_m_already_member">Είμαι ήδη μέλος</string>
+    <string name="register_password">Κωδικός</string>
+    <string name="register_agree_with_terms_conditions"><![CDATA[Συμφωνώ με τους Όρους και τις Προϋποθέσεις]]></string>
+    <string name="login_login">Σύνδεση</string>
+    <string name="login_forgot_your_password">"Ξεχάσατε τον κωδικό σας? "</string>
+    <string name="Reset_pass_reset_password">"Επαναφορά "</string>
+    <string name="Reset_pass_reset">"Επαναφορά "</string>
+    <string name="buy_buy">Αγορά</string>
+    <string name="profile_username">Όνομα Χρήστη</string>
+    <string name="profile_logout">Αποσύνδεση</string>
+    <string name="nav_home">Σπίτι</string>
+    <string name="nav_profile">Προφίλ</string>
+    <string name="register_email">Ηλ.Ταχυδρομείο</string>
+</resources>

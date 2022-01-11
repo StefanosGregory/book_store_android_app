@@ -46,6 +46,11 @@ public class UserMenuActivity extends AppCompatActivity {
         bottomNavigationView.setupWithNavController(menu, navController);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        return navController.navigateUp();
+    }
+
     
 
 

@@ -25,7 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:text="PURCHASE"
+        android:fontFamily="@font/comfortaa"
+        android:text="@string/buy_purchase"
+        android:textColor="@color/text"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Quantity:"
+        android:text="@string/buy_quantity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buy_book_price" />
@@ -107,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Payment Method:"
+        android:text="@string/buy_payment_method"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buy_book_quantity" />
@@ -128,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:text="Credit Card" />
+            android:text="@string/buy_credit_card" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_paypal"
@@ -152,7 +154,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:text="Total:"
+        android:text="@string/buy_total"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/payment_methods" />
@@ -185,7 +187,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:enabled="false"
-        android:text="Buy Now"
+        android:onClick="buy"
+        android:text="@string/buy_buynow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buy_total" />
@@ -195,7 +198,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:text="Cancel"
+        android:text="@string/buy_cancel"
+        android:textColor="@android:color/holo_red_light"
         app:layout_constraintEnd_toEndOf="@+id/buy_book_buy_btn"
         app:layout_constraintStart_toStartOf="@+id/buy_book_buy_btn"
         app:layout_constraintTop_toBottomOf="@+id/buy_book_buy_btn" />
