@@ -18,7 +18,7 @@
 
         <TextView
             android:id="@+id/textViewDescription"
-            android:layout_width="200dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="4dp"
@@ -100,8 +100,8 @@
 
         <Button
             android:id="@+id/buttonBuy"
-            android:layout_width="55dp"
-            android:layout_height="34dp"
+            android:layout_width="64dp"
+            android:layout_height="32dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/button"

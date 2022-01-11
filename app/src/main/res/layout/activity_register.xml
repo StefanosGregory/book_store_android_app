@@ -9,6 +9,16 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="16dp">
 
+    <ImageView
+        android:id="@+id/voice_full_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@+id/editTextFullName"
+        app:layout_constraintTop_toTopOf="@+id/editTextFullName"
+        app:srcCompat="@drawable/ic_baseline_keyboard_voice_24" />
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="243dp"

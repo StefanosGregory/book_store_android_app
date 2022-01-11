@@ -29,17 +29,26 @@ public class bookAdapter  extends FirebaseRecyclerAdapter<book, bookAdapter.book
     }
 
     // Function to bind the view in Card view(here
-    // "person.xml") iwth data in
-    // model class(here "person.class")
+    // "book.xml") with data in
+    // model class(here "book.class")
     @Override
     protected void
     onBindViewHolder(@NonNull bookViewholder holder, int position, @NonNull book model)
     {
 
         Glide.with(holder.imageView.getContext()).load(model.getCover()).into(holder.imageView);
-        holder.textViewTitle.setText(model.getTitle());
-        holder.textViewType.setText(model.getType());
-        holder.textViewDescription.setText(model.getDescription());
+        if(Locale.getDefault().getDisplayLanguage().equals("Ελληνικά")){
+            //Greek
+            holder.textViewTitle.setText(model.getTitle_el());
+            holder.textViewType.setText(model.getType_el());
+            holder.textViewDescription.setText(model.getDescription_el());
+        }else
+        {
+            //English
+            holder.textViewTitle.setText(model.getTitle());
+            holder.textViewType.setText(model.getType());
+            holder.textViewDescription.setText(model.getDescription());
+        }
         holder.textViewAuthor.setText(model.getAuthor());
         holder.textViewPrice.setText("€"+model.getPrice());
         holder.tts.setOnClickListener(new View.OnClickListener() {

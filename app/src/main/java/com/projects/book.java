@@ -3,14 +3,44 @@ package com.projects;
 public class book {
     private String cover;
     private String title;
+    private String title_el;
     private String type;
+    private String type_el;
     private String description;
+    private String description_el;
     private String author;
     private String price;
     private String quantity;
 
+
     public book(){}
 
+    //Greek
+    public String getTitle_el() {
+        return title_el;
+    }
+
+    public void setTitle_el(String title_el) {
+        this.title_el = title_el;
+    }
+
+    public String getType_el() {
+        return type_el;
+    }
+
+    public void setType_el(String type_el) {
+        this.type_el = type_el;
+    }
+
+    public String getDescription_el() {
+        return description_el;
+    }
+
+    public void setDescription_el(String description_el) {
+        this.description_el = description_el;
+    }
+
+    //English
     public String getDescription() {
         return description;
     }

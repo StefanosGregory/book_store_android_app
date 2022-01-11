@@ -1,25 +1,36 @@
 package com.projects;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     EditText email,password;
+    private ImageView iv_mic;
+    private TextView tv_Speech_to_text;
+    private static final int REQUEST_CODE_SPEECH_INPUT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +41,43 @@ public class MainActivity extends AppCompatActivity {
         // Text Inputs email and password
         email = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.editTextTextPassword);
+
+        iv_mic = findViewById(R.id.voice_mail);
+        tv_Speech_to_text = findViewById(R.id.editTextTextEmailAddress);
+
+        iv_mic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,
+                        Locale.getDefault());
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak to text");
+
+                try {
+                    startActivityIfNeeded(intent, REQUEST_CODE_SPEECH_INPUT);
+                }
+                catch (Exception e) {
+                    Toast.makeText(MainActivity.this, " " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_SPEECH_INPUT) {
+            if (resultCode == RESULT_OK && data != null) {
+                ArrayList<String> result = data.getStringArrayListExtra(
+                        RecognizerIntent.EXTRA_RESULTS);
+                tv_Speech_to_text.setText(Objects.requireNonNull(result).get(0));
+            }
+        }
+    }
+
 
     // Login method
     public  void login(View view){
@@ -52,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
 
     // Register method
     public  void register(View view){
