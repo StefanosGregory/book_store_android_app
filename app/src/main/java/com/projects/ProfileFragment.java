@@ -42,21 +42,21 @@ public class ProfileFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        // Get firebase auth instance
         mAuth = FirebaseAuth.getInstance();
+        // Get current user
         user = mAuth.getCurrentUser();
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profile, container, false);
-
+        // Create Items
         Button button = view.findViewById(R.id.logout);
         TextView usernameTextView =  view.findViewById(R.id.textViewUsername);
         TextView emailTextView =  view.findViewById(R.id.textViewEmail);
-//        TextView phoneTextView =  view.findViewById(R.id.textViewUsername);
-
+        // Set user's information
         usernameTextView.setText(user.getDisplayName());
         emailTextView.setText(user.getEmail());
-//        phoneTextView.setText(user.getDisplayName());
 
+        // Create dialog to change user full name if he gives new one
         view.findViewById(R.id.profile_edit_username).setOnClickListener(view -> {
             EditText inputEditTextField = new EditText(getContext());
             AlertDialog dialog = new AlertDialog.Builder(getContext())
@@ -88,6 +88,7 @@ public class ProfileFragment extends Fragment  {
             dialog.show();
         });
 
+        // Create dialog to change user email if he gives new one
         view.findViewById(R.id.profile_edit_email).setOnClickListener(view -> {
             EditText inputEditTextField = new EditText(getContext());
             AlertDialog dialog = new AlertDialog.Builder(getContext())
@@ -118,7 +119,7 @@ public class ProfileFragment extends Fragment  {
         });
 
 
-
+        // Sign out user and direct him to main(login) activity
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override

@@ -14,8 +14,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import me.ibrahimsn.lib.SmoothBottomBar;
 
 public class UserMenuActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
-
     private NavController navController;
     private SmoothBottomBar bottomNavigationView;
 
@@ -23,22 +21,18 @@ public class UserMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_menu);
-
+        // Sign items
         bottomNavigationView= findViewById(R.id.bottomBar);
         navController= Navigation.findNavController(this, R.id.user_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController);
-
+        // Call setupSmoothBottomBar method
         setupSmoothBottomBar();
         
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.main_menu, menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
 
     private void setupSmoothBottomBar() {
+        // Create bottomNavigationView
         PopupMenu popupMenu = new PopupMenu(this, null);
         popupMenu.inflate(R.menu.menu);
         Menu menu = popupMenu.getMenu();
@@ -50,10 +44,5 @@ public class UserMenuActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         return navController.navigateUp();
     }
-
-    
-
-
-
 
 }

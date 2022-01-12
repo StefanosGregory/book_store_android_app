@@ -35,34 +35,38 @@ public class bookAdapter  extends FirebaseRecyclerAdapter<book, bookAdapter.book
     protected void
     onBindViewHolder(@NonNull bookViewholder holder, int position, @NonNull book model)
     {
-
+        // Load image by url into imageView
         Glide.with(holder.imageView.getContext()).load(model.getCover()).into(holder.imageView);
+        // If current user's is Greek sign Greek values
         if(Locale.getDefault().getDisplayLanguage().equals("Ελληνικά")){
             //Greek
             holder.textViewTitle.setText(model.getTitle_el());
             holder.textViewType.setText(model.getType_el());
             holder.textViewDescription.setText(model.getDescription_el());
-        }else
+        }
+        // Else sign English values
+        else
         {
             //English
             holder.textViewTitle.setText(model.getTitle());
             holder.textViewType.setText(model.getType());
             holder.textViewDescription.setText(model.getDescription());
         }
+        // Sign rest values
         holder.textViewAuthor.setText(model.getAuthor());
         holder.textViewPrice.setText("€"+model.getPrice());
-        holder.tts.setOnClickListener(new View.OnClickListener() {
+        holder.tts.setOnClickListener(new View.OnClickListener() { // Create text to speech listener
             @Override
             public void onClick(View view) {
                 MenuFragment.tts.speak(model.getTitle(), TextToSpeech.QUEUE_FLUSH, null);
             }
         });
-
-        int quantity =Integer.parseInt(model.getQuantity());
-
+        // Sign book quantity value
+        int quantity = Integer.parseInt(model.getQuantity());
+        // If quantity more than 1 or 1 make buy button clickable
         if(quantity >= 1){
             holder.buttonBuy.setEnabled(true);
-
+            // Load buy activity with extras
             holder.buttonBuy.setOnClickListener(view -> {
                 Intent myIntent = new Intent(holder.imageView.getContext(), buyActivity.class);
 
@@ -86,6 +90,7 @@ public class bookAdapter  extends FirebaseRecyclerAdapter<book, bookAdapter.book
                 myIntent.putExtra("quantity", model.getQuantity());
                 myIntent.putExtra("price", model.getPrice());
                 myIntent.putExtra("cover", model.getCover());
+                // Start the activity
                 holder.imageView.getContext().startActivity(myIntent);
             });
         }
@@ -101,7 +106,7 @@ public class bookAdapter  extends FirebaseRecyclerAdapter<book, bookAdapter.book
     }
 
     // Sub Class to create references of the views in Card
-    // view (here "person.xml")
+    // view (here "book.xml")
     class bookViewholder extends RecyclerView.ViewHolder {
         TextView textViewTitle, textViewType, textViewDescription, textViewAuthor, textViewPrice;
         Button buttonBuy;

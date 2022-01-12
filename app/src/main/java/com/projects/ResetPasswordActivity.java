@@ -32,12 +32,15 @@ public class ResetPasswordActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         String msg1,msg2,msg3;
+        // If  local language is greek load greek msg values
         if(Locale.getDefault().getDisplayLanguage().equals("Ελληνικά")){
             //Greek
             msg1 = "Εισαγάγετε τη διεύθυνση email σας";
             msg2 = "Η επαναφορά του email στάλθηκε!";
             msg3 = "Σφάλμα";
-        }else
+        }
+        // Else load english msg values
+        else
         {
             //English
             msg1 = "Enter your mail address";
@@ -46,6 +49,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         }
 
         btnReset.setOnClickListener(new View.OnClickListener() {
+            // Sent reset email to change password
             @Override
             public void onClick(View v) {
                 String email = inputEmail.getText().toString().trim();

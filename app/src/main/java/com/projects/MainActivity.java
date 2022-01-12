@@ -41,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         // Text Inputs email and password
         email = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.editTextTextPassword);
-
+        // Sign views (image, text)
         iv_mic = findViewById(R.id.voice_mail);
         tv_Speech_to_text = findViewById(R.id.editTextTextEmailAddress);
-
+        // When image clicked load voice recognition as new intent
         iv_mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_SPEECH_INPUT) {
             if (resultCode == RESULT_OK && data != null) {
+                // If everything is okay load text into tv_Speech_to_text
                 ArrayList<String> result = data.getStringArrayListExtra(
                         RecognizerIntent.EXTRA_RESULTS);
                 tv_Speech_to_text.setText(Objects.requireNonNull(result).get(0));
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Login method
     public  void login(View view){
+        // Login user if credentials are wright and direct him to home
         mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -103,12 +105,14 @@ public class MainActivity extends AppCompatActivity {
 
     // Register method
     public  void register(View view){
+        // Load register activity
         startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
         finish();
     }
 
 
     public void ShowHidePass(View view){
+        // If eye img clicked show password or hide it
 
         if(view.getId()==R.id.show_pass_btn){
 
@@ -128,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void forgotPassword(View view){
+        // Start
         startActivity(new Intent(this, ResetPasswordActivity.class));
     }
 }

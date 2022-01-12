@@ -18,16 +18,13 @@ import org.w3c.dom.Text;
 
 public class buyActivity extends AppCompatActivity {
     String toast_msg;
-
     int quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy);
-
-//        myIntent.putExtra("quantity", model.getQuantity());
-
+        // Load items
         TextView quantityText = findViewById(R.id.buy_quantity);
         TextView totalPrice = findViewById(R.id.buy_total);
         TextView titleText = findViewById(R.id.buy_book_title);
@@ -38,26 +35,29 @@ public class buyActivity extends AppCompatActivity {
         ImageView cover = findViewById(R.id.buy_book_img);
         SeekBar quantity_bar = findViewById(R.id.buy_book_quantity);
         Button buyNow = findViewById(R.id.buy_book_buy_btn);
-
+        // Get intent
         Intent intent = getIntent();
-
-        Double book_price = Double.parseDouble(intent.getStringExtra("price"));
+        // Take extras from intent and set in text views
+        double book_price = Double.parseDouble(intent.getStringExtra("price"));
         int available_books = Integer.parseInt(intent.getStringExtra("quantity"));
-
+        // Set extras
         titleText.setText(intent.getStringExtra("title"));
         type.setText(intent.getStringExtra("type"));
         author.setText(intent.getStringExtra("author"));
         desc.setText(intent.getStringExtra("desc"));
         price.setText("€" + book_price);
         toast_msg = intent.getStringExtra("msg");
+        // Load book image
         Glide.with(this).load(intent.getStringExtra("cover")).into(cover);
-
+        // Set max value same as quantity on bar
         quantity_bar.setMax(available_books);
-
+        // Calculate price on bar value change
         quantity_bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                // Set quantity
                 quantityText.setText("" + i);
+                // Set price
                 totalPrice.setText("€" + String.format("%.2f", i*book_price));
                 quantity = i;
 
@@ -65,25 +65,23 @@ public class buyActivity extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
+
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                if (seekBar.getProgress()==0) {
-                    buyNow.setEnabled(false);
-                } else {
-                    buyNow.setEnabled(true);
-                }
+                // Enable button if bar isn't = 0
+                buyNow.setEnabled(seekBar.getProgress() != 0);
             }
         });
 
 
-
+        // Close activity on cancel
         findViewById(R.id.buy_book_cancel).setOnClickListener(view -> finish());
     }
 
     public void buy(View view){
+        // Show bought message
         Toast.makeText(view.getContext(),toast_msg, Toast.LENGTH_SHORT).show();
     }
 }

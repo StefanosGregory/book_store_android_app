@@ -21,11 +21,11 @@ import java.util.Locale;
 public class MenuFragment extends Fragment {
     private View view;
     public static TextToSpeech tts;
-
     private RecyclerView recyclerView;
-    bookAdapter adapter; // Create Object of the Adapter class
-    DatabaseReference databaseReference; // Create object of the
-    // Firebase Realtime Database
+    // Create Object of the Adapter class
+    bookAdapter adapter;
+    // Create object of the Firebase Realtime Database
+    DatabaseReference databaseReference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,22 +38,23 @@ public class MenuFragment extends Fragment {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_menu, container, false);
+        // Get firebase reference
         databaseReference = FirebaseDatabase.getInstance().getReference();
         recyclerView = view.findViewById(R.id.recycler1);
         // To display the Recycler view linearly
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        // It is a class provide by the FirebaseUI to make a
-        // query in the database to fetch appropriate data
+        // It is a class provide by the FirebaseUI to make a query in the database to fetch appropriate data
         FirebaseRecyclerOptions<book> options = new FirebaseRecyclerOptions.Builder<book>()
                 .setQuery(databaseReference, book.class)
                 .build();
         adapter = new bookAdapter(options);
         recyclerView.setAdapter(adapter);
-
+        // Create text to speech
         tts=new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if(status != TextToSpeech.ERROR) {
+                    // Set as language same with users default
                     tts.setLanguage(Locale.getDefault());
                 }
             }
@@ -61,8 +62,7 @@ public class MenuFragment extends Fragment {
         return view;
     }
 
-    // Function to tell the app to start getting
-    // data from database on starting of the activity
+    // Function to tell the app to start getting data from database on starting of the activity
     @Override
     public void onStart()
     {
@@ -70,8 +70,7 @@ public class MenuFragment extends Fragment {
         adapter.startListening();
     }
 
-    // Function to tell the app to stop getting
-    // data from database on stopping of the activity
+    // Function to tell the app to stop getting data from database on stopping of the activity
     @Override
     public void onStop()
     {

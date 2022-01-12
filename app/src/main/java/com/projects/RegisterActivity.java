@@ -43,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         iv_mic = findViewById(R.id.voice_full_name);
         tv_Speech_to_text_fullname = findViewById(R.id.editTextEmail);
 
+        // When mic image clicked start voice recognition to fill full name
         iv_mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -66,6 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
     {
+        // If everything is okay load text to tv_Speech_to_text_fullname
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_SPEECH_INPUT) {
             if (resultCode == RESULT_OK && data != null) {
@@ -77,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void back(View view){
+        // Close and load login activity
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
         finish();
     }
@@ -90,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         // Firebase instance
         mAuth = FirebaseAuth.getInstance();
-
+        // Register using email and password user if him infos are correct to firebase and direct him to home
         CheckBox termConditions = findViewById(R.id.checkBox);
         if (termConditions.isChecked()){
             mAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString())
@@ -110,6 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void changeUserProfile(String fullname, FirebaseUser user){
+        // Update users profile to inster also his full name
         UserProfileChangeRequest profileChangeRequest  = new UserProfileChangeRequest
                 .Builder().setDisplayName(fullname)
                 .build();
@@ -117,6 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void ShowHidePass(View view){
+        // When clicked eye image show or hide password
         EditText passwordText = findViewById(R.id.edit_password);
 
         if(view.getId()==R.id.show_pass_btn){
