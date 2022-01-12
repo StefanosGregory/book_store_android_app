@@ -23,4 +23,5 @@
     <string name="nav_home">Σπίτι</string>
     <string name="nav_profile">Προφίλ</string>
     <string name="register_email">Ηλ.Ταχυδρομείο</string>
+    <string name="change_password">Αλλαγή κωδικού.</string>
 </resources>

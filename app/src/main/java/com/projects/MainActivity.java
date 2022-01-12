@@ -81,20 +81,19 @@ public class MainActivity extends AppCompatActivity {
 
     // Login method
     public  void login(View view){
-//        mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-        mAuth.signInWithEmailAndPassword("test@mail.com", "123456")
+        mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            showMessage("Success", "login successfully");
+                            Toast.makeText(MainActivity.this, "welcome!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(),UserMenuActivity.class);
                             intent.putExtra("user",mAuth.getCurrentUser());
                             startActivity(intent);
                             finish();
 
                         }else {
-                            showMessage("Error", task.getException().getLocalizedMessage());
+                            Toast.makeText(MainActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -108,9 +107,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    void showMessage(String title, String message){
-        new AlertDialog.Builder(this).setTitle(title).setMessage(message).setCancelable(true).show();
-    }
 
     public void ShowHidePass(View view){
 

@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import org.w3c.dom.Text;
 
 public class buyActivity extends AppCompatActivity {
+    String toast_msg;
 
     int quantity;
 
@@ -48,6 +49,7 @@ public class buyActivity extends AppCompatActivity {
         author.setText(intent.getStringExtra("author"));
         desc.setText(intent.getStringExtra("desc"));
         price.setText("€" + book_price);
+        toast_msg = intent.getStringExtra("msg");
         Glide.with(this).load(intent.getStringExtra("cover")).into(cover);
 
         quantity_bar.setMax(available_books);
@@ -82,6 +84,6 @@ public class buyActivity extends AppCompatActivity {
     }
 
     public void buy(View view){
-        Toast.makeText(view.getContext(), quantity + " book bought successfully!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(view.getContext(),toast_msg, Toast.LENGTH_SHORT).show();
     }
 }

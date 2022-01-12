@@ -65,10 +65,23 @@ public class bookAdapter  extends FirebaseRecyclerAdapter<book, bookAdapter.book
 
             holder.buttonBuy.setOnClickListener(view -> {
                 Intent myIntent = new Intent(holder.imageView.getContext(), buyActivity.class);
-                myIntent.putExtra("title", model.getTitle());
-                myIntent.putExtra("type", model.getType());
+
+                if(Locale.getDefault().getDisplayLanguage().equals("Ελληνικά")){
+                    //Greek
+                    myIntent.putExtra("title", model.getTitle_el());
+                    myIntent.putExtra("type", model.getType_el());
+                    myIntent.putExtra("desc", model.getTitle_el());
+                    myIntent.putExtra("msg", "Ολοκλήρωση αγοράς με επιτυχία!");
+                }else
+                {
+                    //English
+                    myIntent.putExtra("title", model.getTitle());
+                    myIntent.putExtra("type", model.getType());
+                    myIntent.putExtra("desc", model.getDescription());
+                    myIntent.putExtra("msg", "Complete purchase successfully!");
+                }
+
                 myIntent.putExtra("author", model.getAuthor());
-                myIntent.putExtra("desc", model.getDescription());
                 myIntent.putExtra("price", model.getPrice());
                 myIntent.putExtra("quantity", model.getQuantity());
                 myIntent.putExtra("price", model.getPrice());

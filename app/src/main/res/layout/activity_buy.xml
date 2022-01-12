@@ -53,10 +53,12 @@
 
     <TextView
         android:id="@+id/buy_book_desc"
-        android:layout_width="wrap_content"
+        android:layout_width="273dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:text="Description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/buy_book_author"
         app:layout_constraintTop_toBottomOf="@+id/buy_book_author" />
 
@@ -71,12 +73,13 @@
 
     <TextView
         android:id="@+id/buy_book_price"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_width="272dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="5dp"
         android:text="Price"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/buy_book_desc"
         app:layout_constraintTop_toBottomOf="@+id/buy_book_desc" />
 
